@@ -28,13 +28,13 @@ public class UserController {
 		return (List<User>) repository.findAll();
 	}
 	
-	// Ruta personalizada para buscar por nombre
+	// Ruta personalizada para buscar por usuario nombre
 	@GetMapping("/user/name/{name}")
 	public List<User> findByName(@PathVariable("name") String name) {
 		return repository.findByName(name);
 	}
 
-    // Ruta personalizada para buscar por apellido
+    // Ruta personalizada para buscar por usuario apellido
     @GetMapping("/user/surname/{surname}")
 	public List<User> findBySurname(@PathVariable("surname") String surname) {
 		return repository.findBySurname(surname);
