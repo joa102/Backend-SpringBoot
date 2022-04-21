@@ -11,16 +11,16 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "superpowers")
 public class Superpower {
 
-    public Superpower() {
-
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @NotBlank(message = "Name is mandatory")
     private String name;
+
+    public Superpower() {
+        //
+    }
 
     public Superpower(String name) {
         this.name = name;
@@ -44,7 +44,7 @@ public class Superpower {
 
     @Override
     public String toString() {
-        return "Hero [id=" + id + ", name=" + name + "]";
+        return "Superpower [id=" + id + ", name=" + name + "]";
     }
     
 }

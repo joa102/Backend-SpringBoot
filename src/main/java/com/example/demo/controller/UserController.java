@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
 @RestController
 public class UserController {
 	
@@ -23,7 +22,7 @@ public class UserController {
 	private UserRepository repository;
 	
 	// Ruta personalizada para obtener todos los usuarios
-	@GetMapping("/users")
+	@GetMapping("")
 	public List<User> allUsers(){
 		return (List<User>) repository.findAll();
 	}

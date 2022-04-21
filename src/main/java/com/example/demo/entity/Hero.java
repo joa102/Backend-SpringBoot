@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,10 +16,6 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "heroes")
 public class Hero {
 
-    public Hero() {
-
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -26,12 +23,23 @@ public class Hero {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    // @OneToMany(cascade = CascadeType.ALL)
+    // private List<Superpower> superpower;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Superpower> superpower;
 
-    public Hero(String name, List<Superpower> superpower) {
+    // public Hero(String name, List<Superpower> superpower) {
+    //     this.name = name;
+    //     this.superpower = superpower;
+    // }
+
+    public Hero() {
+        //
+    }
+
+    public Hero(String name) {
         this.name = name;
-        this.superpower = superpower;
     }
 
     public long getId() {
@@ -61,6 +69,7 @@ public class Hero {
     @Override
     public String toString() {
         return "Hero [id=" + id + ", name=" + name + ", superpower=" + superpower + "]";
+        // return "Hero [id=" + id + ", name=" + name + ", superpower=" + superpower.toString() + "]";
     }
 
 }
